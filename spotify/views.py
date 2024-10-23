@@ -8,14 +8,11 @@ from .util import *
 from api.models import Room
 from .models import Vote
 
-from django.conf import settings  # Access Django's global settings
-import os
+from django.conf import settings
 
-# Use the environment variables
-CLIENT_ID = settings.env('CLIENT_ID')  # Or use os.getenv() if needed
-CLIENT_SECRET = settings.env('CLIENT_SECRET')
-REDIRECT_URI = settings.env('REDIRECT_URI')
-
+CLIENT_ID = getattr(settings, 'CLIENT_ID', 'default_client_id')
+CLIENT_SECRET =  getattr(settings, 'CLIENT_SECRET', 'default_client_secret')
+REDIRECT_URI = getattr(settings, 'REDIRECT_URI', 'default_redirect_uri')
 
 
 class AuthURL(APIView):

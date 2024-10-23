@@ -1,13 +1,22 @@
 from django.shortcuts import render, redirect
-from .credentials import REDIRECT_URI, CLIENT_SECRET, CLIENT_ID
+# from .credentials import REDIRECT_URI, CLIENT_SECRET, CLIENT_ID
 from rest_framework.views import APIView
 from requests import Request, post
 from rest_framework import status
 from rest_framework.response import Response
 from .util import *
 from api.models import Room
-
 from .models import Vote
+
+from django.conf import settings  # Access Django's global settings
+import os
+
+# Use the environment variables
+CLIENT_ID = settings.env('CLIENT_ID')  # Or use os.getenv() if needed
+CLIENT_SECRET = settings.env('CLIENT_SECRET')
+REDIRECT_URI = settings.env('REDIRECT_URI')
+
+
 
 class AuthURL(APIView):
     def get(self, request, fornat=None):

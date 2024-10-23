@@ -1,8 +1,17 @@
 from .models import SpotifyToken
 from django.utils import timezone
 from datetime import timedelta
-from .credentials import CLIENT_ID, CLIENT_SECRET
+# from .credentials import CLIENT_ID, CLIENT_SECRET
 from requests import post, put, get
+
+from django.conf import settings  # Access Django's global settings
+import os
+
+# Use the environment variables
+CLIENT_ID = settings.env('CLIENT_ID')  # Or use os.getenv() if needed
+CLIENT_SECRET = settings.env('CLIENT_SECRET')
+REDIRECT_URI = settings.env('REDIRECT_URI')
+
 
 
 BASE_URL = "https://api.spotify.com/v1/me/"

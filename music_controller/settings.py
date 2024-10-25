@@ -16,6 +16,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 import environ
+import dj_database_url
 
 env = environ.Env()
 environ.Env.read_env()
@@ -91,10 +92,11 @@ WSGI_APPLICATION = 'music_controller.wsgi.application'
 #         'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': BASE_DIR / 'db.sqlite3',
 
+#     }
 # }
 
 # Render PostgreSQL database (Live)
-import dj_database_url
+
 
 DATABASES = {
     'default': dj_database_url.parse(env('DATABASE_URL'))

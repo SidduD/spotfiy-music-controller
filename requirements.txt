@@ -5,7 +5,6 @@ attrs==23.1.0
 certifi==2024.8.30
 cffi==1.15.1
 charset-normalizer==3.4.0
-cryptography==42.0.5
 customtkinter==5.2.2
 cycler==0.11.0
 darkdetect==0.8.0
